@@ -10,7 +10,7 @@ public class SceneTransitioner : MonoBehaviour {
 		AAA
 	}
 
-	public void transitionaa(string loadedScene, TransitionAnimationType animType ) {
+	public void transitionSceen(string loadedScene, TransitionAnimationType animType ) {
 		SceneManager.LoadScene( loadedScene );
 	}
 	

@@ -84,8 +84,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Menu_Input.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IMenu_Input.cs" />
     <Compile Include="Assets\Scripts\SceneTransitioner.cs" />
+    <Compile Include="Assets\Scripts\StageSelect\StageSelectHandler.cs" />
+    <Compile Include="Assets\Scripts\Title\TitleHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
