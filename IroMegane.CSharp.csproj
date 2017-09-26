@@ -85,7 +85,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Interfaces\IMenu_Input.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IStageObject.cs" />
     <Compile Include="Assets\Scripts\SceneTransitioner.cs" />
+    <Compile Include="Assets\Scripts\ScreenEffect.cs" />
+    <Compile Include="Assets\Scripts\Stage0\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Stage0\PlayerObject.cs" />
     <Compile Include="Assets\Scripts\StageSelect\StageSelectHandler.cs" />
     <Compile Include="Assets\Scripts\Title\TitleHandler.cs" />
   </ItemGroup>

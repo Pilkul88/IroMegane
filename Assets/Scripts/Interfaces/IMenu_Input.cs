@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class IMenu_Input : MonoBehaviour {
 
@@ -12,25 +13,52 @@ public abstract class IMenu_Input : MonoBehaviour {
 		setkey = null;
 	}
 
+	public enum AxisVectol{
+		ZERO,
+		UP,
+		DOWN,
+		RIGHT,
+		LEFT
+	}
+
 	//平行方向にスティックが倒れているか
-	public bool horizontalAxisHandler {
+	public  AxisVectol horizontalAxisHandler {
 		get {
-			bool pressedHorizontal = false;
-			if( Mathf.Abs(Input.GetAxis("Horizontal")) == 1 ) {
-				pressedHorizontal = true;
+			AxisVectol av = AxisVectol.ZERO;
+			int fallValue = ( int )Input.GetAxis( "Horizontal" );
+			//Debug.Log( Input.GetAxis( "Horizontal" ) +","+ fallValue);
+			switch( fallValue ) {
+				case 1:
+					av = AxisVectol.RIGHT;
+					break;
+				case -1:
+					av = AxisVectol.LEFT;
+					break;
+				default:
+					av = AxisVectol.ZERO;
+					break;
 			}
-			return pressedHorizontal;
+			return av;
 		}
 	}
 
 	//垂直方向にスティックが倒れているか
-	public bool pressedVerticalAxisHandler {
+	public AxisVectol pressedVerticalAxisHandler {
 		get {
-			bool pressedVertical = false;
-			if( Mathf.Abs(Input.GetAxis( "Vertical" )) == 1 ) {
-				pressedVertical = true;
+			AxisVectol av = AxisVectol.ZERO;
+			int fallValue = ( int )Input.GetAxis( "Vertical" );
+			switch( fallValue ) {
+				case 1:
+					av = AxisVectol.UP;
+					break;
+				case -1:
+					av = AxisVectol.DOWN;
+					break;
+				default:
+					av = AxisVectol.ZERO;
+					break;
 			}
-			return pressedVertical;
+			return av;
 		}
 	}
 
@@ -47,6 +75,13 @@ public abstract class IMenu_Input : MonoBehaviour {
 		return targetKey;
 	}
 
+
+	/// <summary>
+	/// 指定された列挙型の値の数返します
+	/// </summary>
+	public int getEnumLength<T>() {
+		return Enum.GetValues( typeof( T ) ).Length;
+	}
 
 	//
 	public void keyExecute( KeyCode targetKey ) {
